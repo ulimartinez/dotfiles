@@ -1,0 +1,25 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "normal",
+    "current_border_width": 2,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 729,
+       "width": 1362,
+       "x": 4,
+       "y": 0
+    },
+    "name": "Messenger - Mozilla Firefox",
+    "percent": 1,
+    "swallows": [
+       {
+       // "class": "^Firefox$",
+       // "instance": "^Navigator$",
+       // "title": "^Messenger\\ \\-\\ Mozilla\\ Firefox$",
+       // "transient_for": "^$",
+       // "window_role": "^browser$"
+       }
+    ],
+    "type": "con"
+}
+
