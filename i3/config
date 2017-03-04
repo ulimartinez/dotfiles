@@ -131,12 +131,13 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # mode to quickly start some apps
 
-set $open "open [e]macs [f]irefox"
+set $open "open [e]macs [f]irefox [s]ocial"
 bindsym $mod+o		mode $open
 
 mode $open {
      bindsym e		layout tabbed; exec emacs; mode "default"
      bindsym f		exec --no-startup-id firefox; mode "default"
+     bindsym s		exec ~/.i3/scripts/social.sh; mode "default"
      bindsym Return    mode "default"
      bindsym Escape    mode "default"
 }

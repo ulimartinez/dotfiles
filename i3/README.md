@@ -12,3 +12,14 @@ By default, i3status looks for configuration files in the following order:
     ~/.i3status.conf
 
     /etc/i3status.conf
+    
+layouts
+--------------
+These are the json files that have the workspace tree of saved layouts
+To restore a layout use
+```bash
+i3-msg "append_layout /path/to/layout.json"
+```
+scripts
+-------------
+These are some script files that are called from i3's config so that it doesn't get too bloated.
