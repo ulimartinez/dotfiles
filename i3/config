@@ -125,6 +125,12 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
+#==============custom execs=============#
+bindsym --release Print exec --no-startup-id scrot -e 'xclip -se c -t image/png -i $f'
+bindsym --release Shift+Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots'
+bindsym --release $mod+Print exec scrot -s -e 'xclip -se c -t image/png -i $f'
+bindsym --release $mod+Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screenshots'
+
 
 #================ Modes ================#
 
@@ -156,7 +162,7 @@ mode $sysmenu {
 }
 
 # mode for controlling volume
-set $audiomenu "volume:  [+]10%  [-]10%  [m]ute  [r]eset"
+set $audiomenu "volume: [m]ute  [r]eset"
 bindsym $mod+p         mode $audiomenu
 
 mode $audiomenu {
@@ -165,6 +171,8 @@ mode $audiomenu {
     bindsym KP_Add        exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
     bindsym minus         exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
     bindsym KP_Subtract   exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+    bindsym Up		  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+    bindsym Down	  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
     bindsym m             exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle; mode "default"
     bindsym Return        mode "default"
     bindsym Escape        mode "default"
