@@ -118,6 +118,10 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
+# move workspace to another screen
+bindsym $mod+z move workspace to output left
+bindsym $mod+x move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -137,19 +141,20 @@ bindsym --release $mod+Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screenshot
 
 # mode to quickly start some apps
 
-set $open "open [e]macs [f]irefox [s]ocial"
+set $open "open [e]macs [f]irefox [s]ocial fi[l]es"
 bindsym $mod+o		mode $open
 
 mode $open {
      bindsym e		layout tabbed; exec emacs; mode "default"
      bindsym f		exec --no-startup-id firefox; mode "default"
      bindsym s		exec ~/.i3/scripts/social.sh; mode "default"
+     bindsym l		exec --no-startup-id nautilus --no-desktop; mode "default"
      bindsym Return    mode "default"
      bindsym Escape    mode "default"
 }
 
 # mode to do system stuff, reload, logout, poweroff and reboot
-set $sysmenu "system:  [r]eload  [l]ogout  [p]oweroff  re[b]oot"
+set $sysmenu "system:  [r]eload  [l]ogout  [p]oweroff  re[b]oot loc[k]"
 bindsym $mod+Delete      mode $sysmenu
 
 mode $sysmenu {
@@ -157,6 +162,7 @@ mode $sysmenu {
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
+    bindsym k	      exec i3lock mode "default"
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
