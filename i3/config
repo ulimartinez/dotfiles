@@ -162,7 +162,7 @@ mode $sysmenu {
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
-    bindsym k	      exec i3lock mode "default"
+    bindsym k	      exec i3lock; mode "default"
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
