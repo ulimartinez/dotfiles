@@ -130,14 +130,28 @@ bindsym $mod+Shift+r restart
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 #==============custom execs=============#
-bindsym --release Print exec --no-startup-id scrot -e 'xclip -se c -t image/png -i $f'
-bindsym --release Shift+Print exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots'
-bindsym --release $mod+Print exec scrot -s -e 'xclip -se c -t image/png -i $f'
-bindsym --release $mod+Shift+Print exec scrot -s -e 'mv $f ~/Pictures/screenshots'
+bindsym --release Print			exec --no-startup-id scrot -e 'xclip -se c -t image/png -i $f && rm $f'
+bindsym --release Shift+Print		exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots/'
+bindsym --release $mod+Print		exec scrot -s -e 'xclip -se c -t image/png -i $f && rm $f'
+bindsym --release $mod+Shift+Print	exec scrot -s -e 'mv $f ~/Pictures/screenshots/'
 
 
-#================ Modes ================#
+#================ modes ================#
 
+# mode to switch hdmi output places
+
+set $output "move hdmi or [o]ff"
+bindsym $mod+F4		mode $output
+
+mode $output {
+     bindsym Left	exec xrandr --output HDMI-0 --auto --left-of eDP; mode "default"
+     bindsym Right	exec xrandr --output HDMI-0 --auto --right-of eDP; mode "default"
+     bindsym Up		exec xrandr --output HDMI-0 --auto --above eDP; mode "default"
+     bindsym Down	exec xrandr --output HDMI-0 --auto --below eDP; mode "default"
+     bindsym o		exec xrandr --output HDMI-0 --off; mode "default"
+     bindsym Return 	mode "default"
+     bindsym Escape 	mode "default"
+}
 
 # mode to quickly start some apps
 
@@ -162,7 +176,7 @@ mode $sysmenu {
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
-    bindsym k	      exec i3lock; mode "default"
+    bindsym k	      exec $HOME/.i3/scripts/i3lock-fancy-multimonitor/lock; mode "default"
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
