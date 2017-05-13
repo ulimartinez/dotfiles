@@ -8,7 +8,7 @@ User=%I
 Type=forking
 Environment=DISPLAY=:0
 ExecStartPre=
-ExecStart=/usr/bin/i3lock
+ExecStart=$HOME/.i3/scripts/i3lock-fancy-multimonitor/lock
 
 [Install]
 WantedBy=sleep.target
