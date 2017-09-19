@@ -134,6 +134,7 @@ client.placeholder      $background $background $background $background $backgro
 client.background $background
 
 #==============custom execs=============#
+exec --no-startup-id /home/ulimartinez/Repos/dotfiles/polybar/polybar.sh
 bindsym --release Print			exec --no-startup-id scrot -e 'xclip -se c -t image/png -i $f && rm $f'
 bindsym --release Shift+Print		exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots/'
 bindsym --release $mod+Print		exec scrot -s -e 'xclip -se c -t image/png -i $f && rm $f'
@@ -148,10 +149,10 @@ set $output "move hdmi or [o]ff"
 bindsym $mod+F4		mode $output
 
 mode $output {
-     bindsym Left	exec xrandr --output HDMI-0 --auto --left-of eDP; mode "default"
-     bindsym Right	exec xrandr --output HDMI-0 --auto --right-of eDP; mode "default"
-     bindsym Up		exec xrandr --output HDMI-0 --auto --above eDP; mode "default"
-     bindsym Down	exec xrandr --output HDMI-0 --auto --below eDP; mode "default"
+     bindsym Left	exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --left-of eDP; mode "default"
+     bindsym Right	exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --right-of eDP; mode "default"
+     bindsym Up		exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --above eDP; mode "default"
+     bindsym Down	exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --below eDP; mode "default"
      bindsym o		exec xrandr --output HDMI-0 --off; mode "default"
      bindsym Return 	mode "default"
      bindsym Escape 	mode "default"
@@ -226,20 +227,20 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-
+# replaced bar with polybar
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
-        tray_output primary
-	colors {
-		background $background
-		statusline $text
-		separator $background
-		#class             border   bg            text
-		focused_workspace  $active  $active       $background
-		active_workspace   $border  $background   $active
-		inactive_workspace $border  $background   $inactive
-		urgent_workspace   $border  $background   $inactive
-	}
-}
+# bar {
+#         status_command i3status
+#         tray_output primary
+# 	colors {
+# 		background $background
+# 		statusline $text
+# 		separator $background
+# 		#class             border   bg            text
+# 		focused_workspace  $active  $active       $background
+# 		active_workspace   $border  $background   $active
+# 		inactive_workspace $border  $background   $inactive
+# 		urgent_workspace   $border  $background   $inactive
+# 	}
+# }
