@@ -177,7 +177,7 @@ set $sysmenu "system:  [r]eload  [l]ogout  [p]oweroff  re[b]oot loc[k]"
 bindsym $mod+Delete      mode $sysmenu
 
 mode $sysmenu {
-    bindsym r         restart
+    bindsym r         restart; exec $HOME/.polybar/polybar.sh
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
