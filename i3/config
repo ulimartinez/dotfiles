@@ -167,7 +167,7 @@ mode $open {
      bindsym e		layout tabbed; exec emacs; mode "default"
      bindsym f		exec --no-startup-id firefox; mode "default"
      bindsym s		exec ~/.i3/scripts/social.sh; mode "default"
-     bindsym l		exec --no-startup-id nautilus --no-desktop; mode "default"
+     bindsym l		exec rofi -show fb -modi fb:~/Repos/dotfiles/rofi/scripts/filebrowser.sh; mode "default"
      bindsym Return    mode "default"
      bindsym Escape    mode "default"
 }
