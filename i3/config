@@ -2,6 +2,8 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+#TODO: refractor all script calls
+
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -14,6 +16,9 @@ font pango:DejaVu Sans Mono 8
 # clear in small sizes. However, its unicode glyph coverage is limited, the old
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
+
+#rules
+for_window [class="Gnome-calculator"] floating enable
 
 #Sweet sweet colors
 set_from_resource $border	color0 #bf616aFF
@@ -91,6 +96,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # switch to workspace
+bindsym --whole-window --border $mod+button4 workspace next
+bindsym --whole-window --border $mod+button5 workspace prev
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -119,7 +126,7 @@ bindsym $mod+z move workspace to output left
 bindsym $mod+x move workspace to output right
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec ~/Repos/dotfiles/i3/scripts/reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -139,7 +146,7 @@ bindsym --release Print			exec --no-startup-id scrot -e 'xclip -se c -t image/pn
 bindsym --release Shift+Print		exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots/'
 bindsym --release $mod+Print		exec scrot -s -e 'xclip -se c -t image/png -i $f && rm $f'
 bindsym --release $mod+Shift+Print	exec scrot -s -e 'mv $f ~/Pictures/screenshots/'
-
+exec nitrogen --reset;
 
 #================ modes ================#
 
@@ -177,7 +184,7 @@ set $sysmenu "system:  [r]eload  [l]ogout  [p]oweroff  re[b]oot loc[k]"
 bindsym $mod+Delete      mode $sysmenu
 
 mode $sysmenu {
-    bindsym r         mode "default"; restart; exec $HOME/.polybar/polybar.sh
+    bindsym r         exec $HOME/Repos/dotfiles/i3/scripts/reload.sh; mode "default";
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
