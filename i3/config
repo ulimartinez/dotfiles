@@ -2,8 +2,6 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-#TODO: refractor all script calls
-
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -126,7 +124,7 @@ bindsym $mod+z move workspace to output left
 bindsym $mod+x move workspace to output right
 
 # reload the configuration file
-bindsym $mod+Shift+c exec ~/Repos/dotfiles/i3/scripts/reload
+bindsym $mod+Shift+c exec ~/.i3/scripts/reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
@@ -141,9 +139,10 @@ client.placeholder      $background $background $background $background $backgro
 client.background $background
 
 #==============custom execs=============#
-exec --no-startup-id /home/ulimartinez/Repos/dotfiles/polybar/polybar.sh
+exec --no-startup-id ~/.polybar/scripts/polybar.sh
+#TODO: replace dirs with variables
 bindsym --release Print			exec --no-startup-id scrot -e 'xclip -se c -t image/png -i $f && rm $f'
-bindsym --release Shift+Print		exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots/'
+bindsym --release Shift+Print		exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots'
 bindsym --release $mod+Print		exec scrot -s -e 'xclip -se c -t image/png -i $f && rm $f'
 bindsym --release $mod+Shift+Print	exec scrot -s -e 'mv $f ~/Pictures/screenshots/'
 exec nitrogen --reset;
@@ -155,11 +154,12 @@ exec nitrogen --reset;
 set $output "move hdmi or [o]ff"
 bindsym $mod+F4		mode $output
 
+#TODO: have a script handle the different options
 mode $output {
-     bindsym Left	exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --left-of eDP; mode "default"
-     bindsym Right	exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --right-of eDP; mode "default"
-     bindsym Up		exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --above eDP; mode "default"
-     bindsym Down	exec ~/.polybar/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --below eDP; mode "default"
+     bindsym Left	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --left-of eDP; mode "default"
+     bindsym Right	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --right-of eDP; mode "default"
+     bindsym Up		exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --above eDP; mode "default"
+     bindsym Down	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --below eDP; mode "default"
      bindsym o		exec xrandr --output HDMI-0 --off; exec xrandr --output eDP --primary; mode "default"
      bindsym Return 	mode "default"
      bindsym Escape 	mode "default"
@@ -174,7 +174,7 @@ mode $open {
      bindsym e		layout tabbed; exec emacs; mode "default"
      bindsym f		exec --no-startup-id firefox; mode "default"
      bindsym s		exec ~/.i3/scripts/social.sh; mode "default"
-     bindsym l		exec rofi -show fb -modi fb:~/Repos/dotfiles/rofi/scripts/filebrowser.sh; mode "default"
+     bindsym l		exec rofi -show fb -modi fb:~/.rofi/scripts/filebrowser.sh; mode "default"
      bindsym Return    mode "default"
      bindsym Escape    mode "default"
 }
@@ -184,7 +184,7 @@ set $sysmenu "system:  [r]eload  [l]ogout  [p]oweroff  re[b]oot loc[k]"
 bindsym $mod+Delete      mode $sysmenu
 
 mode $sysmenu {
-    bindsym r         exec $HOME/Repos/dotfiles/i3/scripts/reload.sh; mode "default";
+    bindsym r         exec ~/.i3/scripts/reload.sh; mode "default";
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
