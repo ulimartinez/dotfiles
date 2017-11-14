@@ -48,9 +48,9 @@ font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 
-modules-left = bspwm i3
+modules-left = i3
 modules-center = 
-modules-right = filesystem xbacklight volume xkeyboard memory cpu wlan eth battery temperature date
+modules-right = filesystem xbacklight volume  memory cpu wlan eth battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -72,21 +72,6 @@ tray-padding = 2
 type = internal/xwindow
 label = %title:0:30:...%
 
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
@@ -98,24 +83,6 @@ label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
 
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %index%
-label-occupied-padding = 2
-
-label-urgent = %index%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %index%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
 
 [module/i3]
 type = internal/i3
@@ -132,13 +99,13 @@ label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
 label-focused = %index%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-focused-background = ${colors.background-alt}
+label-focused-underline = ${colors.primary}
+label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
+label-unfocused-padding = 2
 
 ; visible = Active workspace on unfocused monitor
 label-visible = %index%
@@ -148,8 +115,8 @@ label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = %index%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
 
 [module/mpd]
 type = internal/mpd
@@ -191,7 +158,7 @@ type = internal/cpu
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
+format-underline =
 label = %percentage%%
 
 [module/memory]
@@ -199,7 +166,7 @@ type = internal/memory
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
+format-underline =
 label = %percentage_used%%
 
 [module/wlan]
@@ -208,7 +175,7 @@ interface = wlo1
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected-underline = 
 label-connected = "%{A1:/home/ulimartinez/.polybar/test.sh:}%essid%%{A}"
 
 format-disconnected =
@@ -252,7 +219,7 @@ time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
+format-underline =
 
 label = %date% %time%
 
@@ -265,7 +232,7 @@ label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = mute
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -291,16 +258,18 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-charging-underline =
 
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-underline =
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.alert}
+ramp-capacity-0-underline = ${colors.alert}
 ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
@@ -317,9 +286,9 @@ thermal-zone = 0
 warn-temperature = 60
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline =
 format-warn = <ramp> <label-warn>
-format-warn-underline = ${self.format-underline}
+format-warn-underline = ${colors.alert}
 
 label = %temperature%
 label-warn = %temperature%

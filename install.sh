@@ -4,7 +4,7 @@ GREEN=$(tput setaf 2)
 NORMAL=$(tput sgr0)
 
 col=80 # change this to whatever column you want the output to start at
-deps=(i3 polybar rofi)
+deps=(i3 polybar rofi termite)
 all=1
 #check if a dependency exists
 check(){
