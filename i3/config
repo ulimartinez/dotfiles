@@ -16,6 +16,8 @@ font pango:DejaVu Sans Mono 8
 # font, it doesn’t scale on retina/hidpi displays.
 
 #rules
+new_float 1pixel
+for_window [class="terminte-float"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 
 #Sweet sweet colors
@@ -30,6 +32,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
+bindsym --release  $mod+Shift+Return exec "terminte -t termite-float"
 bindsym $mod+Return exec termite
 
 
@@ -145,7 +148,7 @@ bindsym --release Print			exec --no-startup-id scrot -e 'xclip -se c -t image/pn
 bindsym --release Shift+Print		exec --no-startup-id scrot -e 'mv $f ~/Pictures/screenshots'
 bindsym --release $mod+Print		exec scrot -s -e 'xclip -se c -t image/png -i $f && rm $f'
 bindsym --release $mod+Shift+Print	exec scrot -s -e 'mv $f ~/Pictures/screenshots/'
-exec nitrogen --reset;
+exec nitrogen --restore;
 
 #================ modes ================#
 

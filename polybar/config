@@ -50,7 +50,7 @@ font-2 = siji:pixelsize=10;1
 
 modules-left = i3
 modules-center = 
-modules-right = filesystem xbacklight volume  memory cpu wlan eth battery temperature date
+modules-right = filesystem xbacklight volume  memory cpu net eth battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -67,6 +67,13 @@ tray-padding = 2
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
+
+[module/net]
+type = custom/script
+format-prefix = " "
+exec = $HOME/Repos/dotfiles/polybar/scripts/net.sh
+click-left = $HOME/Repos/dotfiles/polybar/scripts/nettoggle.sh
+interval = 2
 
 [module/xwindow]
 type = internal/xwindow
