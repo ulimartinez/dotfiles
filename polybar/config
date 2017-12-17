@@ -46,7 +46,7 @@ module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
+font-2 = "Wuncon Siji:pixelsize=10;1"
 
 modules-left = i3
 modules-center = 
@@ -71,8 +71,8 @@ tray-padding = 2
 [module/net]
 type = custom/script
 format-prefix = " "
-exec = $HOME/Repos/dotfiles/polybar/scripts/net.sh
-click-left = $HOME/Repos/dotfiles/polybar/scripts/nettoggle.sh
+exec = $HOME/repos/dotfiles/polybar/scripts/net.sh
+click-left = $HOME/repos/dotfiles/polybar/scripts/nettoggle.sh
 interval = 2
 
 [module/xwindow]
@@ -233,6 +233,8 @@ label = %date% %time%
 [module/volume]
 type = internal/volume
 
+master-soundcard = hw:1
+speaker-soundcard = hw:1
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}

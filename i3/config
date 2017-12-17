@@ -155,15 +155,17 @@ exec nitrogen --restore;
 # mode to switch hdmi output places
 
 set $output "move hdmi or [o]ff"
+set $laptop_screen "eDP-1"
+set $monitor "HDMI-1"
 bindsym $mod+F4		mode $output
 
 #TODO: have a script handle the different options
 mode $output {
-     bindsym Left	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --left-of eDP; mode "default"
-     bindsym Right	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --right-of eDP; mode "default"
-     bindsym Up		exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --above eDP; mode "default"
-     bindsym Down	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output HDMI-0 --auto --primary --below eDP; mode "default"
-     bindsym o		exec xrandr --output HDMI-0 --off; exec xrandr --output eDP --primary; mode "default"
+     bindsym Left	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --left-of $laptop_screen; mode "default"
+     bindsym Right	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --right-of $laptop_screen; mode "default"
+     bindsym Up		exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --above $laptop_screen; mode "default"
+     bindsym Down	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --below $laptop_screen; mode "default"
+     bindsym o		exec xrandr --output $monitor --off; exec xrandr --output $laptop_screen --primary; mode "default"
      bindsym Return 	mode "default"
      bindsym Escape 	mode "default"
 }
@@ -191,7 +193,7 @@ mode $sysmenu {
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
-    bindsym k	      exec $HOME/.i3/scripts/i3lock-fancy-multimonitor/lock; mode "default"
+    bindsym k	      exec $HOME/.i3/scripts/i3lock-fancy-multimonitor/lock.sh; mode "default"
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
