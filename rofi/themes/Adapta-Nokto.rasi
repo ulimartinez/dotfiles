@@ -8,7 +8,7 @@
     blue:                        rgba ( 38, 139, 210, 100 % );
     urgent-foreground:           rgba ( 255, 82, 82, 100 % );
     alternate-urgent-background: rgba ( 69, 90, 100, 100 % );
-    active-foreground:           rgba ( 0, 188, 212, 100 % );
+    active-foreground:           rgba ( 191, 97, 106, 100 % );
     lightbg:                     rgba ( 238, 232, 213, 100 % );
     selected-active-foreground:  rgba ( 253, 246, 227, 100 % );
     alternate-active-background: rgba ( 69, 90, 100, 100 % );
@@ -32,7 +32,7 @@
 #window {
     background-color: @background;
     border:           1;
-    padding:          5;
+    padding:          0;
 }
 #mainbox {
     border:  0;
@@ -51,7 +51,7 @@
     border:       2px dash 0px 0px ;
     border-color: @separatorcolor;
     spacing:      2px ;
-    scrollbar:    true;
+    scrollbar:    false;
     padding:      2px 0px 0px ;
 }
 #element {
@@ -95,7 +95,7 @@
     text-color:       @alternate-active-foreground;
 }
 #scrollbar {
-    width:        4px ;
+    width:        0px ;
     border:       0;
     handle-width: 8px ;
     padding:      0;

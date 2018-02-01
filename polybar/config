@@ -46,7 +46,7 @@ module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=10;1"
+font-2 = "Wuncon Siji:style=Regular"
 
 modules-left = i3
 modules-center = 
