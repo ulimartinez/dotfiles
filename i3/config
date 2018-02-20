@@ -144,10 +144,10 @@ client.background $background
 #==============custom execs=============#
 exec --no-startup-id ~/.polybar/scripts/polybar.sh
 #TODO: replace dirs with variables
-bindsym --release Print			exec --no-startup-id "scrot -e 'xclip -se c -t image/png -i $f && rm $f'"
-bindsym --release Shift+Print		exec --no-startup-id "scrot -e 'mv $f ~/Images/screenshots/$f'"
-bindsym --release $mod+Print		exec "scrot -s -e 'xclip -se c -t image/png -i $f && rm $f'"
-bindsym --release $mod+Shift+Print	exec "scrot -s -e 'mv $f ~/Images/screenshots/$f'"
+bindsym --release Print			exec --no-startup-id "scrot -ez 'xclip -se c -t image/png -i $f && rm $f'"
+bindsym --release Shift+Print		exec --no-startup-id "scrot -ez 'mv $f ~/Images/screenshots/$f'"
+bindsym --release $mod+Print		exec "scrot -s -ez 'xclip -se c -t image/png -i $f && rm $f'"
+bindsym --release $mod+Shift+Print	exec "scrot -s -ez 'mv $f ~/Images/screenshots/$f'"
 
 #================ modes ================#
 
