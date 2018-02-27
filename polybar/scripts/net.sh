@@ -1,5 +1,5 @@
 #!/bin/bash
-TYPE=0
+TYPE=1
 if [ "$TYPE" -eq "0" ]; then
     iw dev wlo1 link | sed -E 's/.*SSID: (.*)$/\1/;tx;d;:x'
 else
