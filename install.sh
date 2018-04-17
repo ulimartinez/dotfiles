@@ -4,7 +4,7 @@ GREEN=$(tput setaf 2)
 NORMAL=$(tput sgr0)
 
 col=80 # change this to whatever column you want the output to start at
-deps=(i3 polybar rofi termite emacs)
+deps=(i3 polybar rofi emacs)
 all=1
 #check if a dependency exists
 check(){
@@ -32,6 +32,13 @@ else
 fi
 # symlink all the files defined in homeconfigs.txt
 line=$(head -n 1 "homeconfigs.txt")
-for conf in $line:
-	    ln -sf $(pwd)/$conf $HOME/$conf
-#TODO: finish this plz
+for conf in $line; do
+    ln -sf $(pwd)/$conf $HOME/$conf
+done
+	    
+#special cases
+check termite
+if [ $all -eq 0 ]; then
+    echo "Missing dependency termite"
+    exit
+ln -sf $(pwd)/termite/config ~/.config/termite/config
