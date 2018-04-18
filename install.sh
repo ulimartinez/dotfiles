@@ -4,7 +4,7 @@ GREEN=$(tput setaf 2)
 NORMAL=$(tput sgr0)
 
 col=80 # change this to whatever column you want the output to start at
-deps=(i3 polybar rofi emacs)
+deps=(i3 polybar rofi)
 all=1
 #check if a dependency exists
 check(){
@@ -39,6 +39,30 @@ done
 #special cases
 check termite
 if [ $all -eq 0 ]; then
-    echo "Missing dependency termite"
+    echo "Missing dependency termite, skipping"
     exit
-ln -sf $(pwd)/termite/config ~/.config/termite/config
+else
+  ln -sf $(pwd)/termite/config ~/.config/termite/config  
+fi
+all=1
+
+check emacs
+if [ $all -eq 0 ]; then
+    echo "Missing dependency emacs, skipping"
+    exit
+else
+    ln -sf $(pwd)/emacs/emacs.d/ ~/.emacs.d
+fi
+all=1
+
+check netctl
+if [ $all -eq 0 ]; then
+    echo "Missing dependency netctl, skipping"
+    exit
+else
+    ln -sf $(pwd)/netctl /etc/netctl
+fi
+all=1
+
+#getty autologin
+ln -sf $(pwd)/.override.conf /etc/systemd/system/getty\@tty1.service.d/override.conf
