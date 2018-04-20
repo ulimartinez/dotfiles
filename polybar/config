@@ -19,9 +19,10 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/custom]
-monitor = ${env:MONITOR:eDP}
+monitor = ${env:MONITOR:eDP-1}
 width = 100%
-height = 27
+height = 52
+dpi=216
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0.0
@@ -46,11 +47,14 @@ module-margin-right = 2
 
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = "Wuncon Siji:style=Regular"
+font-2 = "Wuncon Siji:style=Regular:pixelsize=8;1"
+font-3 = "Font Awesome 5 Free:style=Regular:pixelsize=8;1"
+font-4 = "Font Awesome 5 Free:style=Solid:pixelsize=8;1"
+font-5 = "Font Awesome 5 Brands:pixelsize=8;1"
 
 modules-left = i3
 modules-center = 
-modules-right = filesystem xbacklight volume  memory cpu net eth battery temperature date
+modules-right = filesystem xbacklight pulseaudio  memory cpu net eth battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -70,7 +74,7 @@ tray-padding = 2
 
 [module/net]
 type = custom/script
-format-prefix = " "
+format-prefix = " "
 exec = $HOME/repos/dotfiles/polybar/scripts/net.sh
 click-left = $HOME/repos/dotfiles/polybar/scripts/nettoggle.sh
 interval = 2
@@ -163,7 +167,7 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline =
 label = %percentage%%
@@ -171,7 +175,7 @@ label = %percentage%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
+format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline =
 label = %percentage_used%%
@@ -224,17 +228,17 @@ date-alt = " %Y-%m-%d"
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline =
 
 label = %date% %time%
 
-[module/volume]
+[module/pulseaudio]
 type = internal/volume
 
-master-soundcard = hw:1
-speaker-soundcard = hw:1
+master-soundcard = default
+speaker-soundcard = default
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL
 label-volume-foreground = ${root.foreground}
@@ -243,7 +247,7 @@ format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = mute
 
-bar-volume-width = 10
+bar-volume-width = 20
 bar-volume-foreground-0 = #55aa55
 bar-volume-foreground-1 = #55aa55
 bar-volume-foreground-2 = #55aa55
@@ -254,7 +258,7 @@ bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
 bar-volume-indicator = |
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-fill = -
 bar-volume-fill-font = 2
 bar-volume-empty = ─
 bar-volume-empty-font = 2
@@ -272,20 +276,22 @@ format-charging-underline =
 format-discharging = <ramp-capacity> <label-discharging>
 format-discharging-underline =
 
-format-full-prefix = " "
+format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${self.format-charging-underline}
 
-ramp-capacity-0 = 
+ramp-capacity-0 = 
 ramp-capacity-0-foreground = ${colors.alert}
 ramp-capacity-0-underline = ${colors.alert}
-ramp-capacity-1 = 
-ramp-capacity-2 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
 ramp-capacity-foreground = ${colors.foreground-alt}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
 animation-charging-foreground = ${colors.foreground-alt}
 animation-charging-framerate = 750
 
@@ -303,9 +309,9 @@ label = %temperature%
 label-warn = %temperature%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]

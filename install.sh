@@ -55,14 +55,5 @@ else
 fi
 all=1
 
-check netctl
-if [ $all -eq 0 ]; then
-    echo "Missing dependency netctl, skipping"
-    exit
-else
-    ln -sf $(pwd)/netctl /etc/netctl
-fi
-all=1
-
 #getty autologin
-ln -sf $(pwd)/.override.conf /etc/systemd/system/getty\@tty1.service.d/override.conf
+sudo ln -sf $(pwd)/.override.conf /etc/systemd/system/getty\@tty1.service.d/override.conf

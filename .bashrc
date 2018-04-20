@@ -115,7 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-export PATH="$PATH:$HOME/.composer/vendor/bin"
+export PATH="$PATH:$HOME/.bin"
 
 #phpbrew
 #[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc

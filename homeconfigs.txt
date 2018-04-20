@@ -1,1 +1,1 @@
-.bash_profile .bashrc .xinitrc .custombg
+.bash_profile .bashrc .xinitrc .custombg .Xresources

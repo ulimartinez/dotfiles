@@ -155,16 +155,16 @@ bindsym --release $mod+Shift+Print	exec "scrot -s -e 'mv $f ~/Images/screenshots
 
 set $output "move hdmi or [o]ff"
 set $laptop_screen "eDP-1"
-set $monitor "HDMI-1"
+set $monitor "DP-2"
 bindsym $mod+F4		mode $output
 
 #TODO: have a script handle the different options
 mode $output {
-     bindsym Left	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --left-of $laptop_screen; exec ~/.custombg; mode "default"
-     bindsym Right	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --right-of $laptop_screen; exec ~/.custombg; mode "default"
-     bindsym Up		exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --above $laptop_screen; exec ~/.custombg; mode "default"
-     bindsym Down	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --below $laptop_screen; exec ~/.custombg; mode "default"
-     bindsym o		exec xrandr --output $monitor --off; exec xrandr --output $laptop_screen --primary; exec ~/.polybar/scripts/polybar.sh; exec ~/.custombg; mode "default"
+     bindsym Left	exec ~/.polybar/scripts/polybar.sh; exec ~/.i3/scripts/xrandr-left.sh; exec ~/.custombg; mode "default"
+     bindsym Right	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --scale 1.65x1.65 --right-of $laptop_screen; exec ~/.custombg; mode "default"
+     bindsym Up		exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --scale 1.65x1.65 --above $laptop_screen; exec ~/.custombg; mode "default"
+     bindsym Down	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --scale 1.65x1.65 --below $laptop_screen; exec ~/.custombg; mode "default"
+     bindsym o		exec xrandr --output $monitor --off --output $laptop_screen --primary; exec ~/.polybar/scripts/polybar.sh; exec ~/.custombg; mode "default"
      bindsym Return 	mode "default"
      bindsym Escape 	mode "default"
 }
@@ -175,7 +175,7 @@ set $open "open [e]macs [f]irefox [s]ocial fi[l]es"
 bindsym $mod+o		mode $open
 
 mode $open {
-     bindsym e		layout tabbed; exec emacs; mode "default"
+     bindsym e		exec emacs; mode "default"
      bindsym f		exec --no-startup-id firefox; mode "default"
      bindsym s		exec ~/.i3/scripts/social.sh; mode "default"
      bindsym l		exec rofi -show fb -modi fb:~/.rofi/scripts/filebrowser.sh; mode "default"

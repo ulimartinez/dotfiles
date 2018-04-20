@@ -1,3 +1,6 @@
+(tool-bar-mode -1)
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'atom-dark t)
 (custom-set-variables
