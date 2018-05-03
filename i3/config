@@ -123,8 +123,8 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # move workspace to another screen
-bindsym $mod+z move workspace to output left
-bindsym $mod+x move workspace to output right
+bindsym $mod+z move workspace to output up
+bindsym $mod+x move workspace to output down
 
 # reload the configuration file
 bindsym $mod+Shift+c exec ~/.i3/scripts/reload
@@ -160,10 +160,10 @@ bindsym $mod+F4		mode $output
 
 #TODO: have a script handle the different options
 mode $output {
-     bindsym Left	exec ~/.polybar/scripts/polybar.sh; exec ~/.i3/scripts/xrandr-left.sh; exec ~/.custombg; mode "default"
-     bindsym Right	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --scale 1.65x1.65 --right-of $laptop_screen; exec ~/.custombg; mode "default"
-     bindsym Up		exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --scale 1.65x1.65 --above $laptop_screen; exec ~/.custombg; mode "default"
-     bindsym Down	exec ~/.polybar/scripts/polybar.sh; exec xrandr --output $monitor --auto --primary --scale 1.65x1.65 --below $laptop_screen; exec ~/.custombg; mode "default"
+     bindsym Left		exec ~/.polybar/scripts/polybar.sh; exec ~/.i3/scripts/xrandr-left.sh; exec ~/.custombg; mode "default"
+     bindsym Right	     	exec ~/.polybar/scripts/polybar.sh; exec ~/.i3/scripts/xrandr-right.sh; exec ~/.custombg; mode "default"
+     bindsym Up		exec ~/.polybar/scripts/polybar.sh; exec ~/.i3/scripts/xrandr-down.sh; exec ~/.custombg; mode "default"
+     bindsym Down	exec ~/.polybar/scripts/polybar.sh; exec ~/.i3/scripts/xrandr-down.sh; exec ~/.custombg; mode "default"
      bindsym o		exec xrandr --output $monitor --off --output $laptop_screen --primary; exec ~/.polybar/scripts/polybar.sh; exec ~/.custombg; mode "default"
      bindsym Return 	mode "default"
      bindsym Escape 	mode "default"
