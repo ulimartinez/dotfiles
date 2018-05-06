@@ -20,6 +20,10 @@ new_float 1pixel
 new_window 1pixel
 for_window [class="Gnome-calculator"] floating enable
 
+#scratchpad terminal
+exec --no-startup-id "termite  --name='dropdown'"
+for_window [instance="dropdown"] move scratchpad, move position center, resize set 1366 900;
+
 #Sweet sweet colors
 set_from_resource $border	color0 #bf616aFF
 set_from_resource $background	color0 #2b303bCC
@@ -32,7 +36,7 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym --release  $mod+Shift+Return exec "termite -t termite-float"
+bindsym --release  $mod+Shift+Return exec ~/.i3/scripts/scratchpad.sh
 bindsym $mod+Return exec termite
 
 
@@ -192,7 +196,7 @@ mode $sysmenu {
     bindsym l         exit
     bindsym p         exec shutdown -P now
     bindsym b         exec shutdown -r now
-    bindsym k	      exec $HOME/.i3/scripts/lock/lock.sh; mode "default"
+    bindsym k	      exec "$HOME/.i3/scripts/lock/lock.sh --pixelate"; mode "default"
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
