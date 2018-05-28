@@ -44,6 +44,7 @@ if [ $all -eq 0 ]; then
 else
   ln -sf $(pwd)/termite/config ~/.config/termite/config  
 fi
+ln -sf $(pwd)/libinput-gestures.conf ~/.config/libinput-gestures.conf
 all=1
 
 check emacs
