@@ -7,7 +7,15 @@ else
 fi
 EMCH=$(echo $MCH | tr -d '[:blank:]')	  
 if [ -z $EMCH ]; then
-    echo ""
+    MCH=$(ip addr show dev bond0 | sed -E 's/.*inet (([0-9]*\.){3}[0-9]*).*/\1/;tx;d;:x')
+    EMCH=$(echo $MCH | tr -d '[:blank:]')
+    if [ -z $EMCH ]; then
+	echo ""
+    elif [ "$TYPE" -eq "0" ]; then
+	echo "ETH"
+    else
+	echo $MCH
+    fi
 else
     echo $MCH
 fi
