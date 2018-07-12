@@ -15,14 +15,14 @@ font pango:DejaVu Sans Mono 8
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
-#rules
-new_float 1pixel
-new_window 1pixel
-for_window [class="Gnome-calculator"] floating enable
 
 #scratchpad terminal
 exec --no-startup-id "termite  --name='dropdown'"
-for_window [instance="dropdown"] move scratchpad, move position center, resize set 1366 900;
+for_window [instance="dropdown"] move scratchpad, border none, resize set 1366 900;
+
+#scratchpad vim
+for_window [class="Gvim"] floating enable, resize set 2100 1000, border none
+for_window [class="Gvim"] move position center
 
 #Sweet sweet colors
 set_from_resource $border	color0 #bf616aFF
@@ -39,6 +39,8 @@ floating_modifier $mod
 bindsym --release  $mod+Shift+Return exec ~/.i3/scripts/scratchpad.sh
 bindsym $mod+Return exec termite
 
+#start vim
+bindsym --release $mod+Shift+v exec gvim
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -47,10 +49,10 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -71,10 +73,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+y split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+x split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -122,9 +124,6 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# move workspace to another screen
-bindsym $mod+z move workspace to output up
-bindsym $mod+x move workspace to output down
 
 # reload the configuration file
 bindsym $mod+Shift+c exec ~/.i3/scripts/reload
@@ -172,11 +171,11 @@ mode $output {
 
 # mode to quickly start some apps
 
-set $open "open [e]macs [f]irefox [s]ocial fi[l]es"
+set $open "open [v]im [f]irefox [s]ocial fi[l]es"
 bindsym $mod+o		mode $open
 
 mode $open {
-     bindsym e		exec emacs; mode "default"
+     bindsym v		exec gvim; mode "default"
      bindsym f		exec --no-startup-id firefox; mode "default"
      bindsym s		exec ~/.i3/scripts/social.sh; mode "default"
      bindsym l		exec rofi -show fb -modi fb:~/.rofi/scripts/filebrowser.sh; mode "default"

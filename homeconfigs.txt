@@ -1,1 +1,1 @@
-.bash_profile .bashrc .xinitrc .custombg .Xresources .bootlock.sh
+.bash_profile .bashrc .xinitrc .custombg .Xresources .bootlock.sh .vimrc .gvimrc
