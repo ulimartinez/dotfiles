@@ -15,6 +15,8 @@ Plugin 'tpope/vim-sensible'
 Plugin 'itchyny/lightline.vim'
 
 Plugin 'tpope/vim-surround'
+
+Plugin 'dikiaap/minimalist'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -47,3 +49,6 @@ runtime! archlinux.vim
 
 " do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
+set t_Co=256
+syntax on
+colorscheme minimalist
