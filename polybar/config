@@ -20,6 +20,7 @@ alert = #bd2c40
 
 [bar/custom]
 monitor = ${env:MONITOR:eDP-1}
+enable-ipc = true
 width = 100%
 height = 52
 dpi=216
@@ -54,7 +55,7 @@ font-5 = "Font Awesome 5 Brands:pixelsize=8;1"
 
 modules-left = i3
 modules-center = 
-modules-right = filesystem xbacklight pulseaudio  memory cpu net eth battery temperature date
+modules-right = filesystem xbacklight pulseaudio  memory cpu net battery temperature date
 
 tray-position = right
 tray-padding = 2
@@ -73,11 +74,14 @@ tray-padding = 2
 ;scroll-down = i3wm-wsprev
 
 [module/net]
-type = custom/script
+type = custom/ipc
 format-prefix = " "
-exec = $HOME/repos/dotfiles/polybar/scripts/net.sh
-click-left = $HOME/repos/dotfiles/polybar/scripts/nettoggle.sh
-interval = 2
+format = <output>
+hook-0 = $HOME/repos/dotfiles/polybar/scripts/net-ssid.sh
+hook-1 = $HOME/repos/dotfiles/polybar/scripts/net-ip.sh
+click-left = polybar-msg -p %pid% hook net 1 
+click-right = polybar-msg -p %pid% hook net 2
+initial = 1
 
 [module/xwindow]
 type = internal/xwindow

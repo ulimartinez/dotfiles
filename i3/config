@@ -21,8 +21,11 @@ exec --no-startup-id "termite  --name='dropdown'"
 for_window [instance="dropdown"] move scratchpad, border none, resize set 1366 900;
 
 #scratchpad vim
-for_window [class="Gvim"] floating enable, resize set 2100 1000, border none
-for_window [class="Gvim"] move position center
+for_window [class="Gvim"] floating enable, border none
+for_window [class="Gvim"] resize set 2700 1700, move position center 
+
+#no title on containers
+new_window 1pixel
 
 #Sweet sweet colors
 set_from_resource $border	color0 #bf616aFF

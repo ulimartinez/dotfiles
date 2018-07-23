@@ -17,6 +17,12 @@ Plugin 'itchyny/lightline.vim'
 Plugin 'tpope/vim-surround'
 
 Plugin 'dikiaap/minimalist'
+
+Plugin 'mhinz/vim-startify'
+
+
+
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -49,6 +55,35 @@ runtime! archlinux.vim
 
 " do not load defaults if ~/.vimrc is missing
 "let skip_defaults_vim=1
+
+" ===================== Startify ===================== "
+let g:startify_custom_header = [
+			\'                  -`',
+			\'                 .o+`',
+			\'                `ooo/',
+			\'               `+oooo:',
+			\'              `+oooooo:',
+			\'              -+oooooo+:',
+			\'           `/++++/+++++++:',
+			\'          `/++++++++++++++:',
+			\'         `/+++ooooooooooooo/`',
+			\'        ./ooosssso++osssssso+`',
+			\'       .oossssso-````/ossssss+`',
+			\'      -osssssso.      :ssssssso.',
+			\'     :osssssss/        osssso+++.',
+			\'    /ossssssss/        +ssssooo/-',
+			\'  `/ossssso+/:-        -:/+osssso+-',
+			\' `+sso+:-`                 `.-/+oso:',
+			\'`++:.                           `-/+/',
+			\'.`                                 `',
+\]
+" set the clipboard to X11 CLIPBOARD buffer
+set clipboard=unnamedplus
+
+" change dir
+set autochdir
+
+" ===================== Colorscheme ===================== "
 set t_Co=256
 syntax on
 colorscheme minimalist
