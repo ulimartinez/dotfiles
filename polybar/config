@@ -79,8 +79,8 @@ format-prefix = " "
 format = <output>
 hook-0 = $HOME/repos/dotfiles/polybar/scripts/net-ssid.sh
 hook-1 = $HOME/repos/dotfiles/polybar/scripts/net-ip.sh
-click-left = polybar-msg -p %pid% hook net 1 
-click-right = polybar-msg -p %pid% hook net 2
+click-left = polybar-msg hook net 1 
+click-right = polybar-msg hook net 2
 initial = 1
 
 [module/xwindow]
