@@ -1,7 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/ulimartinez/repos/dotfiles/vim/bundle/vim-startify'
 let g:netrw_dirhist_2='/home/ulimartinez/repos/dotfiles/vim/bundle/vim-startify/plugin'
 let g:netrw_dirhist_3='/home/ulimartinez/repos/dotfiles/vim/bundle'
 let g:netrw_dirhist_4='/home/ulimartinez/repos/dotfiles/vim/bundle/vim-startify'
 let g:netrw_dirhist_5='/home/ulimartinez/repos/dotfiles/vim/bundle/vim-startify/test'
+let g:netrw_dirhist_6='/home/ulimartinez/.config/termite'
+let g:netrw_dirhist_7='/etc/httpd/conf'

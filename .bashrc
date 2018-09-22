@@ -121,4 +121,8 @@ export PATH="$PATH:$HOME/.bin"
 #[[ -e ~/.phpbrew/bashrc ]] && source ~/.phpbrew/bashrc
 
 #shortened ps1 for prompt
-PS1='$(echo $(dirname $(echo \w | sed "s;$HOME;~;"))/ |sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/s;~;" -e "s;\./;;")\W\$ '
+PS1='$(echo \w/ | sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/u;~;" -e "s;\./;;" -e "s;[a-zA-Z]\{1\}/$;;")$(echo \W | sed "s;ulimartinez;;")\$ '
+
+source /usr/share/fzf/key-bindings.bash
+
+source /usr/share/fzf/completion.bash
