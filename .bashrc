@@ -127,4 +127,6 @@ source /usr/share/fzf/key-bindings.bash
 source /usr/share/fzf/completion.bash
 #PS1='$(echo $(dirname $(echo \w | sed "s;$HOME;~;"))/ |sed -e "s;\(/\.\?.\)[^/]*;\1;g" -e "s;/h/s;~;" -e "s;\./;;")\W\$ '
 #PS1='$(echo \w | sed -e "s;\(/\.\?.\)[^\/]*;\1;g" -e "s;\(.*\)\.\?.$;\1;" -e "s;\/h\/u;~;")\W\$ '
-PS1='$(echo \w | sed -e "s/\(\/\.\?.\)[^\/]*/\1/g" -e "s/\/h\/u/~/" -e "s/\/\?.[^~\/]$/\//")$(echo \W | sed -e "s/ulimartinez//")\$ '
+#PS1='$(echo \w | sed -e "s/\(\/\.\?.\)[^\/]*/\1/g" -e "s/\/h\/u/~/" -e "s/\/\?.[^~\/]$/\//")$(echo \W | sed -e "s/ulimartinez//")\$ '
+export PS1='$(echo \w | sed -e "s;\(/\.\?.\)[^\/]*;\1;g" -e "s;\(.*\)\.\?.$;\1;" -e "s;\/h\/u\?$;;" -e "s;\/h\/u;~;")\W\$ '
+
