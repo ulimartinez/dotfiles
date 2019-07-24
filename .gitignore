@@ -2,3 +2,6 @@ emacs/emacs.d/auto-save-list/
 netctl/*
 vim/bundle/*
 vim/swap/
+polybar/polybar
+i3/i3
+rofi/rofi
